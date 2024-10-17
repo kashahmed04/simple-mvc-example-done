@@ -7,7 +7,7 @@
     "nodemon": "nodemon --watch ./server ./server/app.js",
     "start": "node ./server/app.js",
     "pretest": "eslint ./server --fix",
-    "test": "echo \"tests complete\""
+    "test": "echo \"No Tests\""
   },
   "author": "Cody Van De Mark / Austin Willoughby",
   "license": "ISC",
