@@ -1,4 +1,7 @@
 // pull in our models. This will automatically load the index.js from that folder
+// is there images of how the application should look when its completed**
+// next homework assignment only being a guide**
+// oP1NktO81mcjlLTV password for mongoDB
 const models = require('../models');
 
 // get the Cat model
@@ -102,15 +105,13 @@ const hostPage3 = (req, res) => {
 
 const hostPage4 = async (req, res) => {
   try {
-    // Fetch all dogs from the database
+    // fetch all dogs from the database
     const docs = await Dog.find({}).lean().exec();
 
-    // Render page4 and pass the list of dogs to the view
-    // Send the array of dogs to the template
     return res.render('page4', { dogs: docs });
   } catch (err) {
     console.log(err);
-    return res.status(500).json({ error: 'Failed to load dogs' });
+    return res.status(500).json({ error: 'failed to load dogs' });
   }
 };
 
@@ -200,6 +201,7 @@ const setName = async (req, res) => {
 };
 
 // create a new dog in the database
+// is this ok**
 const createDog = async (req, res) => {
   if (!req.body.name || !req.body.breed || !req.body.age) {
     return res.status(400).json({ error: 'name, breed, and age are all required' });
@@ -211,6 +213,7 @@ const createDog = async (req, res) => {
 
   // do we always put a try catch how do we know when to**
   // because we are using it a lot more now**
+  // are we allowed to use .save()**
   try {
     await newDog.save();
     return res.status(201).json({ name: newDog.name, breed: newDog.breed, age: newDog.age });
@@ -221,14 +224,19 @@ const createDog = async (req, res) => {
 };
 
 // look up a dog by name and increment its age
+// is this ok**
 const findDogAndUpdateAge = async (req, res) => {
-  if (!req.query.name) {
+  //body is for what we send to the server and the query is the link if we send data
+  //to change the data we should sent it through the body
+  //query params are if we have a /something and body is when we have a fetch request
+  if (!req.body.name) {
     return res.status(400).json({ error: 'Name is required to search' });
   }
 
   try {
+    // this is built in right**
     const dog = await Dog.findOneAndUpdate(
-      { name: req.query.name },
+      { name: req.body.name },
       { $inc: { age: 1 } },
       { returnDocument: 'after' },
     ).lean().exec();

@@ -21,12 +21,8 @@
   the browser will prompt the user to complete the field, 
   preventing the form from being submitted until all required 
   fields are completed. -->
-  <!--can we use this required keyword instead of doing the errors in the JS
-  like we have been if an area is not filed out** -->
-  <!--how do we make it so an error returns if the dog does not exist**-->
-  <!--how do we make it to only increase the age of that specific dog**-->
   <!--should we not have the required since we deal with it in the controller
-  code or should we leave it here as well**-->
+  index.js or should we leave it here as well**-->
   <!--go over code**-->
   <!--check errors in code**-->
   <!--check if mongo was installed correctly and for heroku**-->
@@ -36,7 +32,7 @@
   <!--we have to include the href for page 4 in all of the handlebars for all the 
   pages right (what about index handlebars)**-->
   <h2>Create a New Dog</h2>
-  <form action="/create-dog" method="POST">
+  <form action="/createDog" method="POST">
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required><br>
     <label for="breed">Breed:</label>
@@ -47,9 +43,9 @@
   </form>
 
   <h2>Lookup Dog by Name to Increase Age</h2>
-  <form action="/increase-age" method="POST">
+  <form action="/increaseAge" method="POST">
     <label for="lookupName">Name:</label>
-    <input type="text" id="lookupName" name="lookupName" required><br>
+    <input type="text" id="lookupName" name="name" required><br>
     <input type="submit" value="Increase Age">
   </form>
 

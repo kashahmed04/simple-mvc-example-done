@@ -41,20 +41,18 @@ let DogModel = {};
    function and return the current date.
 */
 
-// how do we know which values to add within each property**
+// how do we know which values to add within each property (it this ok for each dog to have these)**
 const DogSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
     trim: true,
-    unique: true,
   },
 
   breed: {
     type: String,
     required: true,
     trim: true,
-    unique: true,
   },
 
   age: {
@@ -65,7 +63,7 @@ const DogSchema = new mongoose.Schema({
 
   createdDate: {
     type: Date,
-    default: Date.now,
+    default: Date.now,  
   },
 
 });
