@@ -2,6 +2,12 @@
 // is there images of how the application should look when its completed**
 // next homework assignment only being a guide**
 // oP1NktO81mcjlLTV password for mongoDB
+// do we need to do npm init or no for homeworks and projects****
+// do we need an id for errors because there were none in the cat examples****
+//is package.json ok****
+//how do we know to put a space between the first and last name when searching for a cat****
+//updates the first instance if we have multiple dogs with the sme name right****
+ 
 const models = require('../models');
 
 // get the Cat model
