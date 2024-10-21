@@ -16,6 +16,9 @@ const expressHandlebars = require('express-handlebars');
 
 // import our router.js file to handle the MVC routes
 // In MVC, you have 'routes' that line up URLs to controller methods
+
+//sets up router, then controller, then models ubt does not get called until we
+//request something with GET, HEAD, or POST
 const router = require('./router.js');
 
 // MONGODB address to connect to.
@@ -47,6 +50,7 @@ const app = express();
 // This option tells express to use /assets in a URL path as a static mirror to our client folder
 // Any requests to /assets will map to the client folder to find a file
 // For example going to /assets/img/favicon.png would return the favicon image
+
 app.use('/assets', express.static(path.resolve(`${__dirname}/../client/`)));
 
 // Call compression and tell the app to use it
@@ -65,6 +69,9 @@ app.use(bodyParser.json());
 // set up the view (V of MVC) to use handlebars
 // You can use other view engines besides handlebars
 // We will also set the default layout to nothing
+
+// this says we are using handlebars and we are making the
+// engine handlebars
 app.engine('handlebars', expressHandlebars.engine({
   defaultLayout: '',
 }));
@@ -78,6 +85,7 @@ app.set('views', `${__dirname}/../views`);
 app.use(favicon(`${__dirname}/../client/img/favicon.png`));
 
 // pass our app to our router object to map the routes
+// this sets up our pathnames
 router(app);
 
 // Tell the app to listen on the specified port

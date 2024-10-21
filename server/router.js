@@ -21,6 +21,7 @@ const router = (app) => {
   app.get('/getName', controllers.getName);
   app.get('/findByName', controllers.searchName);
 
+  //get handles head reuqests as well
   // whenever someone goes to the site without a path (AKA the home page), call controllers.index
   // For example www.webpage.com
   app.get('/', controllers.index);
@@ -39,6 +40,9 @@ const router = (app) => {
 
   app.post('/increaseAge', controllers.findDogAndUpdateAge);
 
+  // do we need a /* for POST requests too or only GET and HEAD requests (we could do it for POST but it is only
+  // for changing state)
+  // do we only use GET and POST requests or can we do other requests as well (all the other requests are there as well)
 };
 
 // export the router function

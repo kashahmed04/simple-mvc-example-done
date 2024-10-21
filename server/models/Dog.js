@@ -41,7 +41,7 @@ let DogModel = {};
    function and return the current date.
 */
 
-// how do we know which values to add within each property (it this ok for each dog to have these)**
+// how do we know which values to add within each property (go over each property)
 const DogSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -63,10 +63,11 @@ const DogSchema = new mongoose.Schema({
 
   createdDate: {
     type: Date,
-    default: Date.now,  
+    default: Date.now,
   },
 
 });
+
 // Create the cat model based on the schema. You provide it with a custom discriminator
 // (the name of the object type. Can be anything)
 // and the schema to make a model from.

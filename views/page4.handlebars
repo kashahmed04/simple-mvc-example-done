@@ -17,15 +17,14 @@
   <a href="/page3">Page 3</a>
 
   <ul>
-  <!-- Handlebars block to loop through the dogs array**-->
-  <!--does this loop through each dog and make it a list element 
-  and updates the list as dogs get added**-->
-  <!--how does it know to use dogs for the list and how 
-  can it access the dogs list that way**-->
-  <!--is the git penalty if we do not submit the link to our repo**-->
-    {{#each dogs}}
-      <li>Name: {{this.name}}, Breed: {{this.breed}}, Age: {{this.age}}</li>
-    {{/each}}
+  <!-- Handlebars block to loop through the dogs array-->
+    {{#if dogs}}
+    <ul>
+      {{#each dogs}}
+        <li>Name: {{this.name}}, Breed: {{this.breed}}, Age: {{this.age}}</li>
+      {{/each}}
+    </ul>
+    {{/if}}
   </ul>
 
 </body>

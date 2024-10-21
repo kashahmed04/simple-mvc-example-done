@@ -1,15 +1,17 @@
 // pull in our models. This will automatically load the index.js from that folder
-// is there images of how the application should look when its completed**
-// next homework assignment only being a guide**
-// oP1NktO81mcjlLTV password for mongoDB
-// do we need to do npm init or no for homeworks and projects****
-// do we need an id for errors because there were none in the cat examples****
-//is package.json ok****
-//how do we know to put a space between the first and last name when searching for a cat****
-//updates the first instance if we have multiple dogs with the sme name right****
- 
+// is there images of how the application should look when its completed****
+// next homework assignment only being a guide****
+// mongoDB tells us if connection string is good for heroku
+// when are we going over this demo in class****
+// go over code and simple mvc controllers code****
+// we have to use the mongoDB cloud setup guide from now on when creating a project right****
+// Setting Up MongoDB Locally guide is done now right we do not need it for future projects****
+// get assignment set up for domo maker and github****
+
+// this defaults to index.js
 const models = require('../models');
 
+// gets the dog and cat model based on the key from index.js for models
 // get the Cat model
 const { Cat, Dog } = models;
 
@@ -105,6 +107,9 @@ const hostPage2 = (req, res) => {
 };
 
 // Function to render the untemplated page3.
+// why are there no specifics here like there is for the other pages is it because we do
+// creation here and GET or POST data (page 2 and page 3) but the rest we list out data without
+// input (do input pages look like this then)**
 const hostPage3 = (req, res) => {
   res.render('page3');
 };
@@ -114,6 +119,7 @@ const hostPage4 = async (req, res) => {
     // fetch all dogs from the database
     const docs = await Dog.find({}).lean().exec();
 
+    //this is used in the HTML to render the dogs and show the list of dogs
     return res.render('page4', { dogs: docs });
   } catch (err) {
     console.log(err);
@@ -207,19 +213,15 @@ const setName = async (req, res) => {
 };
 
 // create a new dog in the database
-// is this ok**
 const createDog = async (req, res) => {
   if (!req.body.name || !req.body.breed || !req.body.age) {
     return res.status(400).json({ error: 'name, breed, and age are all required' });
   }
 
-  // the body is what is in the HTML right after we press submit or before**
+  // can we think of it as body being POST requests and query being GET or HEAD requests
   const dogData = { name: req.body.name, breed: req.body.breed, age: req.body.age };
   const newDog = new Dog(dogData);
 
-  // do we always put a try catch how do we know when to**
-  // because we are using it a lot more now**
-  // are we allowed to use .save()**
   try {
     await newDog.save();
     return res.status(201).json({ name: newDog.name, breed: newDog.breed, age: newDog.age });
@@ -230,17 +232,15 @@ const createDog = async (req, res) => {
 };
 
 // look up a dog by name and increment its age
-// is this ok**
 const findDogAndUpdateAge = async (req, res) => {
-  //body is for what we send to the server and the query is the link if we send data
-  //to change the data we should sent it through the body
-  //query params are if we have a /something and body is when we have a fetch request
+  // body is for what we send to the server and the query is the link if we send data
+  // to change the data we should sent it through the body
+  // query params are if we have a /something and body is when we have a fetch request
   if (!req.body.name) {
     return res.status(400).json({ error: 'Name is required to search' });
   }
 
   try {
-    // this is built in right**
     const dog = await Dog.findOneAndUpdate(
       { name: req.body.name },
       { $inc: { age: 1 } },
@@ -295,7 +295,7 @@ const searchName = async (req, res) => {
     console.log(err);
     return res.status(500).json({ error: 'Something went wrong' });
   }
-
+  //we could put it in but the line in the try is what we are checking for
   // If we do not find something that matches our search, doc will be empty.
   if (!doc) {
     return res.status(404).json({ error: 'No cats found' });
@@ -357,8 +357,6 @@ const notFound = (req, res) => {
 };
 
 // export the relevant public controller functions
-// the page: function name is basically saying this variable represents this function right**
-// so when we use it in router.js we can use that name instead of the function name right**
 module.exports = {
   index: hostIndex,
   page1: hostPage1,
