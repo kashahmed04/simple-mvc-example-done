@@ -17,8 +17,8 @@ const expressHandlebars = require('express-handlebars');
 // import our router.js file to handle the MVC routes
 // In MVC, you have 'routes' that line up URLs to controller methods
 
-//sets up router, then controller, then models ubt does not get called until we
-//request something with GET, HEAD, or POST
+// sets up router, then controller, then models ubt does not get called until we
+// request something with GET, HEAD, or POST
 const router = require('./router.js');
 
 // MONGODB address to connect to.

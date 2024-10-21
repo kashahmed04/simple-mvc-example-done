@@ -119,7 +119,7 @@ const hostPage4 = async (req, res) => {
     // fetch all dogs from the database
     const docs = await Dog.find({}).lean().exec();
 
-    //this is used in the HTML to render the dogs and show the list of dogs
+    // this is used in the HTML to render the dogs and show the list of dogs
     return res.render('page4', { dogs: docs });
   } catch (err) {
     console.log(err);
@@ -295,7 +295,7 @@ const searchName = async (req, res) => {
     console.log(err);
     return res.status(500).json({ error: 'Something went wrong' });
   }
-  //we could put it in but the line in the try is what we are checking for
+  // we could put it in but the line in the try is what we are checking for
   // If we do not find something that matches our search, doc will be empty.
   if (!doc) {
     return res.status(404).json({ error: 'No cats found' });
